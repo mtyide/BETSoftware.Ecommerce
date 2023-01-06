@@ -25,7 +25,6 @@ namespace BETSoftware.Data.Repositories
             if (entity == null) return null!;
 
             entity.Active = false;
-            _products.Update(entity);
             await Commit();
 
             return entity;
@@ -52,7 +51,12 @@ namespace BETSoftware.Data.Repositories
             var entity = _products.Find(product.Id);
             if (entity == null) { return null!; }
 
-            _products.Update(product);
+            entity.ImageUri = product.ImageUri;
+            entity.Name = product.Name;
+            entity.Price = product.Price;
+            entity.Description = product.Description;
+            entity.Active = product.Active;
+
             await Commit();
 
             return product;
