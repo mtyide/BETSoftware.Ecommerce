@@ -32,6 +32,7 @@ namespace Api.Controllers
             var result = await _mediator.Send(new GetProductsQuery());
             if (result == null) { return null; }
             if (filter.Page < 1) { filter.Page = 1; }
+            if (filter.Size < 1) { filter.Size = 50; }
             if (filter.Page == 1) { return result.Take(filter.Size).ToList(); }
 
             var recordsPerPage = (filter.Page - 1) * 50;
