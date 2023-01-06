@@ -4,7 +4,7 @@ UI is currently not hooked up yet and SQL script is not included (Database)
 This assessment currently uses DB First approach (Entity Framework Core)
 # Swagger UI/API
 You can use the Swagger API to test data creation (Products)  
-The UI (ASP.NET Core with AngularJS/MVC/ReactJS) will be used to create Orders and manage the Checkout process of the eCommerce site once API completed
+The UI (ASP.NET Core with AngularJS/MVC/ReactJS) will be used to create Orders and manage the Checkout process of the eCommerce site once API is completed
 # Not included
 BackOffice to manage Products IS NOT part of this assessment. Refer to Swagger API to test endpoints (Products). Products are NOT deleted but rather marked/flagged as INACTIVE, same applies to ORDERS  
 Creation of Users. They are pre-populated due to time constraints. Refer to DB script
