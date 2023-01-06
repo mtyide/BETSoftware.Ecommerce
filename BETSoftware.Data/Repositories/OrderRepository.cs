@@ -49,6 +49,9 @@ namespace BETSoftware.Data.Repositories
 
         public async Task<Order> Update(Order order)
         {
+            var entity = await _orders.FindAsync(order.Id);
+            if (entity == null) { return null!; }
+
             _orders.Update(order);
             await Commit();
 
