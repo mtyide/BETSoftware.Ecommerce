@@ -58,27 +58,18 @@ namespace Api.Controllers
         {
             if (!ModelState.IsValid) { return null; }
 
-            var model = await _mediator.Send(new GetOrderByIdQuery(id));
-
-            if (model == null) { return null; }
-
             var order = _mapper.Map<Order>(orderDto);
             order.Id = id;
-            return await _mediator.Send(new UpdateOrderCommand(order));
+            var result = await _mediator.Send(new UpdateOrderCommand(order));
+            return result;
         }
 
         [HttpDelete]
         [Route("deleteOrder/{id}")]
         public async Task<Order?> DeleteOrder(int id)
         {
-            if (!ModelState.IsValid) { return null; }
-
-            var order = await _mediator.Send(new GetOrderByIdQuery(id));
-
-            if (order == null) { return null; }
-
-            order.Id = id;
-            return await _mediator.Send(new DeleteOrderCommand(order));
+            var result = await _mediator.Send(new DeleteOrderCommand(id));
+            return result!;
         }
     }
 }

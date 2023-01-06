@@ -59,13 +59,10 @@ namespace Api.Controllers
         {
             if (!ModelState.IsValid) { return null; }
 
-            var model = await _mediator.Send(new GetProductByIdQuery(id));
-
-            if (model == null) { return null; }
-
             var product = _mapper.Map<Product>(productDto);
             product.Id = id;
-            return await _mediator.Send(new UpdateProductCommand(product)); 
+            var result = await _mediator.Send(new UpdateProductCommand(product)); 
+            return result;
         }
 
         [HttpDelete]
@@ -74,12 +71,8 @@ namespace Api.Controllers
         {
             if (!ModelState.IsValid) { return null; }
 
-            var product = await _mediator.Send(new GetProductByIdQuery(id));
-
-            if (product == null) { return null; }
-
-            product.Id = id;
-            return await _mediator.Send(new DeleteProductCommand(product));
+            var result = await _mediator.Send(new DeleteProductCommand(id));
+            return result!;
         }
     }
 }

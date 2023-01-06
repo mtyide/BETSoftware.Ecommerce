@@ -19,13 +19,16 @@ namespace BETSoftware.Data.Repositories
             return await _storage.SaveChangesAsync();
         }
 
-        public async Task<Product> Delete(Product product)
+        public async Task<Product> Delete(int id)
         {
-            product.Active = false;
-            _products.Update(product);
+            var entity = await _products.FindAsync(id);
+            if (entity == null) return null!;
+
+            entity.Active = false;
+            _products.Update(entity);
             await Commit();
 
-            return product;
+            return entity;
         }
 
         public Task<Product> Get(int id)

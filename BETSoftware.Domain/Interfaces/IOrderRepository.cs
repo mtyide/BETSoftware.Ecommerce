@@ -4,7 +4,7 @@ namespace BETSoftware.Domain.Interfaces
 {
     public interface IOrderRepository
     {
-        Task<Order> Delete(Order order);
+        Task<Order> Delete(int id);
         Task<Order> Get(int id);
         Task<Order> Update(Order order);
         Task<List<Order>> GetAll();

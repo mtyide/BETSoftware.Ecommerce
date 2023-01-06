@@ -12,6 +12,6 @@ namespace BETSoftware.Domain.Handlers
         {
             _service = service;
         }
-        public Task<Product> Handle(DeleteProductCommand request, CancellationToken cancellationToken) => _service.Delete(request.Product);
+        public Task<Product> Handle(DeleteProductCommand request, CancellationToken cancellationToken) => _service.Delete(request.Id);
     }
 }

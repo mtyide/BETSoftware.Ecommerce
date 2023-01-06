@@ -7,7 +7,7 @@ namespace BETSoftware.Domain.Interfaces
         Task<List<Order>> GetAll();
         Task<Order> Insert(Order order);
         Task<Order> Update(Order order);
-        Task<Order> Delete(Order order);
+        Task<Order> Delete(int id);
         Task<Order> Get(int id);
     }
 }

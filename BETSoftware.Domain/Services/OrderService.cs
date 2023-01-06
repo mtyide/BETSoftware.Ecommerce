@@ -11,9 +11,9 @@ namespace BETSoftware.Domain.Services
             _orderRepository = orderRepository;
         }
 
-        public Task<Order> Delete(Order order)
+        public Task<Order> Delete(int id)
         {
-            return _orderRepository.Delete(order);
+            return _orderRepository.Delete(id);
         }
 
         public Task<Order> Get(int id)

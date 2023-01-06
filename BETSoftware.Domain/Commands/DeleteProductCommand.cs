@@ -3,5 +3,5 @@ using MediatR;
 
 namespace BETSoftware.Domain.Commands
 {
-    public record DeleteProductCommand(Product Product) : IRequest<Product>;
+    public record DeleteProductCommand(int Id) : IRequest<Product>;
 }

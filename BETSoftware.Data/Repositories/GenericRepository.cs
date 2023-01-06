@@ -18,9 +18,12 @@ namespace BETSoftware.Data.Repositories
             return await _storage.SaveChangesAsync();
         }
 
-        public async Task<T> Delete(T entity)
+        public async Task<T> Delete(int id)
         {
-            _entity.Update(entity);
+            var entity = await _entity.FindAsync(id);
+            if (entity == null) { return null!; }
+
+            _entity.Remove(entity);
             await Commit();
 
             return entity;

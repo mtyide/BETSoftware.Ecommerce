@@ -7,7 +7,7 @@ namespace BETSoftware.Domain.Interfaces
         Task<List<Product>> GetAll();
         Task<Product> Insert(Product product);
         Task<Product> Update(Product product);
-        Task<Product> Delete(Product product);
+        Task<Product> Delete(int id);
         Task<Product> Get(int id);
     }
 }

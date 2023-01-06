@@ -11,9 +11,9 @@ namespace BETSoftware.Domain.Services
             _repository = reposirtory;
         }
 
-        public Task<Product> Delete(Product product)
+        public Task<Product> Delete(int id)
         {
-            return _repository.Delete(product);
+            return _repository.Delete(id);
         }
 
         public Task<Product> Get(int id)
