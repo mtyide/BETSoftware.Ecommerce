@@ -51,10 +51,10 @@ namespace BETSoftware.Data.Repositories
             var entity = _products.Find(product.Id);
             if (entity == null) { return null!; }
 
-            entity.ImageUri = product.ImageUri;
-            entity.Name = product.Name;
-            entity.Price = product.Price;
-            entity.Description = product.Description;
+            if (!string.IsNullOrEmpty(product.ImageUri)) { entity.ImageUri = product.ImageUri; }
+            if (!string.IsNullOrEmpty(product.Name)) { entity.Name = product.Name; }
+            if (product.Price != 0) entity.Price = product.Price;
+            if (!string.IsNullOrEmpty(product.Description)) { entity.Description = product.Description; }
             entity.Active = product.Active;
 
             await Commit();
