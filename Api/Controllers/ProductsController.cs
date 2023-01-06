@@ -59,7 +59,7 @@ namespace Api.Controllers
         {
             if (!ModelState.IsValid) { return null; }
 
-            var model = _mediator.Send(new GetProductByIdQuery(id));
+            var model = await _mediator.Send(new GetProductByIdQuery(id));
 
             if (model == null) { return null; }
 
@@ -74,12 +74,12 @@ namespace Api.Controllers
         {
             if (!ModelState.IsValid) { return null; }
 
-            var product = _mediator.Send(new GetProductByIdQuery(id));
+            var product = await _mediator.Send(new GetProductByIdQuery(id));
 
             if (product == null) { return null; }
 
-            product.Result.Id = id;
-            return await _mediator.Send(new DeleteProductCommand(product.Result));
+            product.Id = id;
+            return await _mediator.Send(new DeleteProductCommand(product));
         }
     }
 }
