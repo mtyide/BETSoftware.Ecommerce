@@ -36,7 +36,7 @@ namespace BETSoftware.Data.Repositories
             return result!;
         }
 
-        public Task<List<Order>> GetAll() => _orders.ToListAsync();
+        public Task<List<Order>> GetAll() => _orders.Include(x => x.Lines).ToListAsync();
 
         public async Task<Order> Insert(Order order)
         {
