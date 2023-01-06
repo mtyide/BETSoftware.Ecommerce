@@ -62,7 +62,7 @@ namespace BETSoftware.Data.Repositories
 
             await Commit();
 
-            return order;
+            return entity;
         }
     }
 }
