@@ -6,7 +6,7 @@ This assessment currently uses DB First approach (Entity Framework Core)
 You can use the Swagger API to test data creation (Products)  
 The UI (ASP.NET Core with AngularJS/MVC/ReactJS) will be used to create Orders and manage the Checkout process of the eCommerce site once API completed
 # Not included
-BackOffice to manage Products IS NOT part of this assessment. Refer to Swagger API to test endpoints (Products)
+BackOffice to manage Products IS NOT part of this assessment. Refer to Swagger API to test endpoints (Products). Products are NOT deleted but rather marked as INACTIVE
 # Login Controller
 Yandisa's Notes - We can assume Api Key (Guid) will be used for authorization after successful authentication  
 Yandisa's Notes - In a real world, oAuth (JWT) can be used instead to authorize users  
