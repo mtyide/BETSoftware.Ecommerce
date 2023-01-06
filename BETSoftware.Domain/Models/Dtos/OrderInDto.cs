@@ -2,7 +2,6 @@
 {
     public class OrderInDto
     {
-        public int Id { get; set; }
         public DateTime? Date { get; set; }
         public int? CustomerId { get; set; }
         public bool? ShippingRequired { get; set; }
