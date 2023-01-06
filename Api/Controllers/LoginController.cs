@@ -32,7 +32,7 @@ namespace Api.Controllers
 
             if (result == null) { return null; }
 
-            var token = new LoginOutDto { Token = Guid.NewGuid().ToString() };
+            var token = new LoginOutDto { Token = Guid.NewGuid().ToString(), Expires = DateTime.UtcNow.AddMinutes(30) };
 
             return token;
         }
