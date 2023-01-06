@@ -48,6 +48,7 @@ namespace Api.Controllers
             if (!ModelState.IsValid) { return null; }
 
             var order = _mapper.Map<Order>(orderDto);
+            order.Date = DateTime.UtcNow;
             return await _mediator.Send(new InsertOrderCommand(order));
         }
 
