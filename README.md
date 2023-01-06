@@ -1,7 +1,7 @@
 # BETSoftware.Ecommerce
 This is an ongoing assessment (Target completion: 11 January 2023 - 10.00am C.A.T)  
 UI is currently not hooked up yet and SQL script is not included (Database)  
-This assessment currently uses DB First approach (EFF)
+This assessment currently uses DB First approach (Entity Framework Core)
 # Swagger UI/API
 You can use the Swagger API to test data creation (Products)  
 The UI (ASP.NET Core with AngularJS/MVC/ReactJS) will be used to create Orders and manage the Checkout process of the eCommerce site once API completed
