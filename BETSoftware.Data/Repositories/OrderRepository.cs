@@ -21,7 +21,7 @@ namespace BETSoftware.Data.Repositories
 
         public async Task<Order> Delete(int id)
         {
-            var entity = await _orders.FindAsync(id);
+            var entity = _orders.Find(id);
             if (entity == null) return null!;
 
             entity.Active = false;
@@ -49,7 +49,7 @@ namespace BETSoftware.Data.Repositories
 
         public async Task<Order> Update(Order order)
         {
-            var entity = await _orders.FindAsync(order.Id);
+            var entity = _orders.Find(order.Id);
             if (entity == null) { return null!; }
 
             _orders.Update(order);

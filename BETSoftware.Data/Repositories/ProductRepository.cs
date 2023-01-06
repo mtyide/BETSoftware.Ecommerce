@@ -21,7 +21,7 @@ namespace BETSoftware.Data.Repositories
 
         public async Task<Product> Delete(int id)
         {
-            var entity = await _products.FindAsync(id);
+            var entity = _products.Find(id);
             if (entity == null) return null!;
 
             entity.Active = false;
@@ -49,7 +49,7 @@ namespace BETSoftware.Data.Repositories
 
         public async Task<Product> Update(Product product)
         {
-            var entity = await _products.FindAsync(product.Id);
+            var entity = _products.Find(product.Id);
             if (entity == null) { return null!; }
 
             _products.Update(product);
