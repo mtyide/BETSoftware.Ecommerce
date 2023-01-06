@@ -23,7 +23,7 @@ namespace Api.Controllers
             _logger = logger;
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("getProducts")]
         public async Task<List<Product>?> GetProducts(Filter filter)
         {
@@ -31,6 +31,7 @@ namespace Api.Controllers
 
             var result = await _mediator.Send(new GetProductsQuery());
             if (result == null) { return null; }
+            if (filter.Page < 1) { filter.Page = 1; }
             if (filter.Page == 1) { return result.Take(filter.Size).ToList(); }
 
             var recordsPerPage = (filter.Page - 1) * 50;

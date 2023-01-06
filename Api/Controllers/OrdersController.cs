@@ -23,7 +23,7 @@ namespace Api.Controllers
             _logger = logger;
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("getOrders")]
         public async Task<List<Order>?> GetOrders(Filter filter)
         {
