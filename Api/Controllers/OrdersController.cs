@@ -25,53 +25,63 @@ namespace Api.Controllers
 
         [HttpPost]
         [Route("getOrders")]
-        public async Task<List<Order>> GetOrders(Filter filter)
+        public async Task<IActionResult> GetOrders(Filter filter)
         {
-            if (!ModelState.IsValid) { return null; }
+            if (!ModelState.IsValid) { return NotFound(); }
 
             var result = await _mediator.Send(new GetOrdersQuery());
             if (result == null) { return null; }
             if (filter.Page < 1) { filter.Page = 1; }
             if (filter.Size < 1) { filter.Size = 50; }
-            if (filter.Page == 1) { return result.Take(filter.Size).ToList(); }
+            if (filter.Page == 1) { return Ok(result.Take(filter.Size).ToList()); }
 
             var recordsPerPage = (filter.Page - 1) * 50;
-            return result.Skip(recordsPerPage).Take(filter.Size).ToList();
+            return Ok(result.Skip(recordsPerPage).Take(filter.Size).ToList());
         }
 
         [HttpGet]
         [Route("getOrderById/{id}")]
-        public async Task<Order> GetOrderById(int id) => await _mediator.Send(new GetOrderByIdQuery(id));
+        public async Task<IActionResult> GetOrderById(int id)
+        {
+            var result = await _mediator.Send(new GetOrderByIdQuery(id));
+
+            if (result == null) { return NotFound();}
+
+            return Ok(result);
+        }
 
         [HttpPost]
         [Route("insertOrder")]
-        public async Task<Order> PostOrder([FromBody] OrderInDto orderDto)
+        public async Task<IActionResult> PostOrder([FromBody] OrderInDto orderDto)
         {
             if (!ModelState.IsValid) { return null; }
 
             var order = _mapper.Map<Order>(orderDto);
             order.Date = DateTime.UtcNow;
-            return await _mediator.Send(new InsertOrderCommand(order));
+            var result = await _mediator.Send(new InsertOrderCommand(order));
+
+            return Ok(result);
         }
 
         [HttpPut]
         [Route("updateOrder/{id}")]
-        public async Task<Order> PutOrder(int id, [FromBody] OrderInDto orderDto)
+        public async Task<IActionResult> PutOrder(int id, [FromBody] OrderInDto orderDto)
         {
-            if (!ModelState.IsValid) { return null; }
+            if (!ModelState.IsValid) { return NotFound(); }
 
             var order = _mapper.Map<Order>(orderDto);
             order.Id = id;
             var result = await _mediator.Send(new UpdateOrderCommand(order));
-            return result;
+
+            return Ok(result);
         }
 
         [HttpDelete]
         [Route("deleteOrder/{id}")]
-        public async Task<Order> DeleteOrder(int id)
+        public async Task<IActionResult> DeleteOrder(int id)
         {
             var result = await _mediator.Send(new DeleteOrderCommand(id));
-            return result!;
+            return Ok(result)!;
         }
     }
 }

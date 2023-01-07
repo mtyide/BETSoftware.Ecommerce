@@ -23,18 +23,18 @@ namespace Api.Controllers
 
         [HttpPost]
         [Route("login")]
-        public async Task<LoginOutDto> Post([FromBody] LoginInDto loginDto)
+        public async Task<IActionResult> Post([FromBody] LoginInDto loginDto)
         {
-            if (!ModelState.IsValid) { return null; }
+            if (!ModelState.IsValid) { return NotFound(); }
 
             var login = _mapper.Map<Login>(loginDto);
             var result = await _mediator.Send(new GetLoginQuery(login));
 
-            if (result == null) { return null; }
+            if (result == null) { return NotFound(); }
 
             var token = new LoginOutDto { Token = Guid.NewGuid().ToString(), Expires = DateTime.UtcNow.AddMinutes(30), Id = result.Id };
 
-            return token;
+            return Ok(token);
         }
     }
 }
