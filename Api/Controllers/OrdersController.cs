@@ -25,7 +25,7 @@ namespace Api.Controllers
 
         [HttpPost]
         [Route("getOrders")]
-        public async Task<List<Order>?> GetOrders(Filter filter)
+        public async Task<List<Order>> GetOrders(Filter filter)
         {
             if (!ModelState.IsValid) { return null; }
 
@@ -45,7 +45,7 @@ namespace Api.Controllers
 
         [HttpPost]
         [Route("insertOrder")]
-        public async Task<Order?> PostOrder([FromBody] OrderInDto orderDto)
+        public async Task<Order> PostOrder([FromBody] OrderInDto orderDto)
         {
             if (!ModelState.IsValid) { return null; }
 
@@ -56,7 +56,7 @@ namespace Api.Controllers
 
         [HttpPut]
         [Route("updateOrder/{id}")]
-        public async Task<Order?> PutOrder(int id, [FromBody] OrderInDto orderDto)
+        public async Task<Order> PutOrder(int id, [FromBody] OrderInDto orderDto)
         {
             if (!ModelState.IsValid) { return null; }
 
@@ -68,7 +68,7 @@ namespace Api.Controllers
 
         [HttpDelete]
         [Route("deleteOrder/{id}")]
-        public async Task<Order?> DeleteOrder(int id)
+        public async Task<Order> DeleteOrder(int id)
         {
             var result = await _mediator.Send(new DeleteOrderCommand(id));
             return result!;

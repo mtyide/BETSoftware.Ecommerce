@@ -23,7 +23,7 @@ namespace Api.Controllers
 
         [HttpPost]
         [Route("login")]
-        public async Task<LoginOutDto?> Post([FromBody] LoginInDto loginDto)
+        public async Task<LoginOutDto> Post([FromBody] LoginInDto loginDto)
         {
             if (!ModelState.IsValid) { return null; }
 

@@ -45,7 +45,7 @@ namespace Api.Controllers
 
         [HttpPost]
         [Route("insertProduct")]
-        public async Task<Product?> PostProduct([FromBody] ProductInDto productDto)
+        public async Task<Product> PostProduct([FromBody] ProductInDto productDto)
         {
             if (!ModelState.IsValid) { return null; }
 
@@ -55,7 +55,7 @@ namespace Api.Controllers
 
         [HttpPut]
         [Route("updateProduct/{id}")]
-        public async Task<Product?> Put(int id, [FromBody] ProductInDto productDto)
+        public async Task<Product> Put(int id, [FromBody] ProductInDto productDto)
         {
             if (!ModelState.IsValid) { return null; }
 
@@ -67,7 +67,7 @@ namespace Api.Controllers
 
         [HttpDelete]
         [Route("deleteProduct/{id}")]
-        public async Task<Product?> Delete(int id)
+        public async Task<Product> Delete(int id)
         {
             if (!ModelState.IsValid) { return null; }
 

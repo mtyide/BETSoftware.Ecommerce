@@ -1,0 +1,35 @@
+<h1 id="tableLabel">Browse Products</h1>
+
+<p *ngIf="!ProductsList"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="ProductsList">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Active</th>
+      <th>Image</th>
+      <th>Price</th>
+      <th>Qty</th>
+      <th>Sub-Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of ProductsList">
+      <td>{{ product.id }}</td>
+      <td>{{ product.name }}</td>
+      <td>{{ product.description }}</td>
+      <td>{{ product.active ? 'Yes' : 'No' }}</td>
+      <td>{{ product.imageUri }}</td>
+      <td>{{ product.price }}</td>
+      <td><input min="1" max="3" #refEl type="number" name="qty" id="qty_{{ product.id }}" (change)="labelSubTotal.innerHTML = calcTotal(product.price, refEl.value, product.id)" /></td>
+      <td><label #labelSubTotal></label></td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th colspan="7"><button disabled="{{ checkoutDisabled }}" class="btn btn-primary">Checkout</button><label class="d-flex justify-content-end">Grand Total: R{{ grandTotal.toFixed(2) }}</label></th>
+    </tr>
+  </tfoot>
+</table>

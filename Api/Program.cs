@@ -5,6 +5,7 @@ using BETSoftware.Domain.Interfaces;
 using BETSoftware.Domain.Services;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Configuration;
 
@@ -63,7 +64,11 @@ app.UseCors(x => x
 
 app.UseHttpLogging();
 
-app.UseStaticFiles();
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(),"Images")),
+    RequestPath = "/Images"
+});
 
 app.UseCookiePolicy();
 
