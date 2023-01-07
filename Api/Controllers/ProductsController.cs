@@ -52,12 +52,14 @@ namespace Api.Controllers
 
         [HttpPost]
         [Route("insertProduct")]
-        public async Task<Product> PostProduct([FromBody] ProductInDto productDto)
+        public async Task<IActionResult> PostProduct([FromBody] ProductInDto productDto)
         {
-            if (!ModelState.IsValid) { return null; }
+            if (!ModelState.IsValid) { return NotFound(); }
 
             var product = _mapper.Map<Product>(productDto);
-            return await _mediator.Send(new InsertProductCommand(product));
+            var result = await _mediator.Send(new InsertProductCommand(product));
+
+            return Ok(result);
         }
 
         [HttpPut]
