@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { FilterParameters } from './../models/filter.module'
 
@@ -9,7 +9,7 @@ import { FilterParameters } from './../models/filter.module'
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent {
-  constructor(private service: ApiService, private route: ActivatedRoute) { }
+  constructor(private service: ApiService, private route: ActivatedRoute, private router: Router) { }
 
   public checkoutDisabled: string = "disabled";
   subTotal: any = [];
@@ -36,6 +36,7 @@ export class ProductsComponent {
       },
       error: (response) => {
         console.log(response);
+        this.router.navigate(['error']);
       }
     });
   }
