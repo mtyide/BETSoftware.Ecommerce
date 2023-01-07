@@ -30,7 +30,7 @@ namespace Api.Controllers
             if (!ModelState.IsValid) { return NotFound(); }
 
             var result = await _mediator.Send(new GetOrdersQuery());
-            if (result == null) { return null; }
+            if (result == null) { return NotFound(); }
             if (filter.Page < 1) { filter.Page = 1; }
             if (filter.Size < 1) { filter.Size = 50; }
             if (filter.Page == 1) { return Ok(result.Take(filter.Size).ToList()); }
