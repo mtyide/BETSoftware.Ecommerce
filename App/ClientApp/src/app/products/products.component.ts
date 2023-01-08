@@ -93,7 +93,9 @@ export class ProductsComponent {
 
   getGrandTotal() {
     this.grandTotal = 0;
-    for (var i = 0; i <= (this.subTotal.length - 1); i++) {
+    for (var i = 0; i <= (this.selectedProductQty.length - 1); i++) {
+      console.log(this.subTotal[i]);
+      if (this.subTotal[i] === NaN || this.subTotal[i] === undefined) { continue; }
       this.grandTotal += this.subTotal[i];
     }
     (this.grandTotal === 0) ? this.checkoutDisabled = "disabled" : this.checkoutDisabled = "";
