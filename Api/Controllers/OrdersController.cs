@@ -71,6 +71,7 @@ namespace Api.Controllers
 
             var order = _mapper.Map<Order>(orderDto);
             order.Id = id;
+            order.Date = DateTime.UtcNow;
             var result = await _mediator.Send(new UpdateOrderCommand(order));
 
             return Ok(result);

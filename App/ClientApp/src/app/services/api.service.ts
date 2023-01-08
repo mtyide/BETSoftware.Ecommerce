@@ -5,6 +5,7 @@ import { environment } from '../../environments/environment';
 import { Login } from './../models/login.module'
 import { FilterParameters } from './../models/filter.module'
 import { Product } from './../models/product.module'
+import { Order } from '../models/order.module';
 
 @Injectable({
   providedIn: 'root'
@@ -20,10 +21,18 @@ export class ApiService {
   }
 
   getProductsById(val: number) : Observable<Product> {
-    return this.http.get<Product>(this.ApiUrl + "/products/getProductsById/" + val);
+    return this.http.get<Product>(this.ApiUrl + "/products/getProductsById" + val);
   }
 
   loginCurrentUser(val: Login) {
     return this.http.post<any>(this.ApiUrl + "/users/login", val);
+  }
+
+  insertOrder(val: Order): Observable<any> {
+    return this.http.post<any>(this.ApiUrl + "/orders/insertOrder", val);
+  }
+
+  updateOrder(val: Order, id: number): Observable<Order> {
+    return this.http.put<Order>(this.ApiUrl + "/orders/updateOrder/" + id, val);
   }
 }

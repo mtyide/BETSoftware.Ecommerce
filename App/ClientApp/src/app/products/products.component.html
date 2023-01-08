@@ -29,7 +29,8 @@
   </tbody>
   <tfoot>
     <tr>
-      <th colspan="7"><button disabled="{{ checkoutDisabled }}" class="btn btn-primary">Checkout</button><label class="d-flex justify-content-end">Grand Total: R{{ grandTotal.toFixed(2) }}</label></th>
+      <th colspan="6"><button disabled="{{ checkoutDisabled }}" class="btn btn-primary" (click)="enableCreateOrder()">Checkout</button><label class="d-flex justify-content-end">Grand Total: R{{ grandTotal.toFixed(2) }}</label></th>
+      <th><button disabled="{{ createOrderDisabled }}" class="btn btn-primary" (click)="createOrder()" >Create Order</button></th>
     </tr>
   </tfoot>
 </table>

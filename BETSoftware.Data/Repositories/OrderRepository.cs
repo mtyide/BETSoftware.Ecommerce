@@ -54,7 +54,16 @@ namespace BETSoftware.Data.Repositories
             entity.Active = order.Active;
             entity.CustomerId = order.CustomerId;
             entity.Date = order.Date;
-            if (order.Lines != null) { entity.Lines = order.Lines; }
+            if (order.Lines != null)
+            {
+                var lines = new List<OrderLines>();
+                foreach (var line in order.Lines)
+                {
+                    if (line.ProductId == null || line.Qty == null) continue;
+                    lines.Add(line);
+                }
+                entity.Lines = lines;
+            }
             if (!string.IsNullOrEmpty(order.ShippingAddress)) { entity.ShippingAddress = order.ShippingAddress; }
             entity.ShippingRequired = order.ShippingRequired;
             if (order.ShippingTax != 0) { entity.ShippingTax = order.ShippingTax; }

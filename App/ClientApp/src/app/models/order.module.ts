@@ -4,7 +4,7 @@ export interface Order {
   CustomerId: number,
   ShippingRequired: boolean,
   ShippingAddress: string,
-  Lines: [],
+  Lines: any,
   Active: boolean,
   TotalAmount: number,
   ShippingTax: number
