@@ -21,8 +21,4 @@
     <ProjectReference Include="..\BETSoftware.Domain\BETSoftware.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Images\" />
-  </ItemGroup>
-
 </Project>
