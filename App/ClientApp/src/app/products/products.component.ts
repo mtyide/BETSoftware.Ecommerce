@@ -5,6 +5,7 @@ import { Order } from '../models/order.module';
 import { Line } from '../models/line.module';
 import { FilterParameters } from './../models/filter.module'
 import { formatDate } from '@angular/common';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-products',
@@ -14,6 +15,10 @@ import { formatDate } from '@angular/common';
 export class ProductsComponent {
   constructor(private service: ApiService, private route: ActivatedRoute, private router: Router) { }
 
+  pageIndex: number = 0;
+  pageSize: number = 0;
+  length: number = 0;
+  pageSizeOptions: number[] = [2, 3, 4, 5];
   date = formatDate(new Date(), 'yyyy/MM/dd', 'en');
   selectedProductIds: any = [];
   selectedProductQty: any = [];
@@ -38,13 +43,16 @@ export class ProductsComponent {
   token: string = "";
   expires: string = "";
   ProductsList: any = [];
-  filterRequest: FilterParameters = {
-    Size: 0,
-    Page: 0
-  }
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => this.id = params['id']);
+    this.getProductsList();
+  }
+
+  pageNavigations(event: PageEvent) {
+    console.log(event);
+    this.pageIndex = event.pageIndex;
+    this.pageSize = event.pageSize;
     this.getProductsList();
   }
 
@@ -71,9 +79,12 @@ export class ProductsComponent {
   }
 
   getProductsList() {
-    this.service.getProducts(this.filterRequest).subscribe({
+    this.service.getProducts().subscribe({
       next: (products) => {
         this.ProductsList = products;
+        this.length = this.ProductsList.length;
+        this.pageIndex = 0;
+        this.pageSize = 50;
       },
       error: (response) => {
         console.log(response);

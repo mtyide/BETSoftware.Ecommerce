@@ -23,20 +23,16 @@ namespace Api.Controllers
             _logger = logger;
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("getOrders")]
-        public async Task<IActionResult> GetOrders(Filter filter)
+        public async Task<IActionResult> GetOrders()
         {
             if (!ModelState.IsValid) { return NotFound(); }
 
             var result = await _mediator.Send(new GetOrdersQuery());
             if (result == null) { return NotFound(); }
-            if (filter.Page < 1) { filter.Page = 1; }
-            if (filter.Size < 1) { filter.Size = 50; }
-            if (filter.Page == 1) { return Ok(result.Take(filter.Size).ToList()); }
 
-            var recordsPerPage = (filter.Page - 1) * 50;
-            return Ok(result.Skip(recordsPerPage).Take(filter.Size).ToList());
+            return Ok(result);
         }
 
         [HttpGet]

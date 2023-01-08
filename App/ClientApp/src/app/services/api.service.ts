@@ -16,8 +16,8 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  getProducts(val: FilterParameters) {
-    return this.http.post(this.ApiUrl + "/products/getProducts", val);
+  getProducts() : Observable<Product[]> {
+    return this.http.get<Product[]>(this.ApiUrl + "/products/getProducts");
   }
 
   getProductsById(val: number) : Observable<Product> {
