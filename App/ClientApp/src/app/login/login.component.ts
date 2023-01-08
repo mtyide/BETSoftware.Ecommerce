@@ -9,7 +9,7 @@ import { Login } from './../models/login.module'
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  public loginRequest: Login = {
+  loginRequest: Login = {
     Password: '',
     Username: ''
   }

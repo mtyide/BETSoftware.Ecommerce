@@ -15,11 +15,11 @@ export class ProductsComponent {
   constructor(private service: ApiService, private route: ActivatedRoute, private router: Router) { }
 
   date = formatDate(new Date(), 'yyyy/MM/dd', 'en');
-  public selectedProductIds: any = [];
-  public selectedProductQty: any = [];
-  public checkoutDisabled: string = "disabled";
-  public createOrderDisabled: string = "disabled";
-  public id: number = 0;
+  selectedProductIds: any = [];
+  selectedProductQty: any = [];
+  checkoutDisabled: string = "disabled";
+  createOrderDisabled: string = "disabled";
+  id: number = 0;
   subTotal: any = [];
   
   order: Order = {
@@ -33,12 +33,12 @@ export class ProductsComponent {
     ShippingTax: 0,
     TotalAmount: 0
   };
-  public grandTotal: number = 0;
-  public totalAmount: number = 0;
-  public token: string = "";
-  public expires: string = "";
-  public ProductsList: any = [];
-  public filterRequest: FilterParameters = {
+  grandTotal: number = 0;
+  totalAmount: number = 0;
+  token: string = "";
+  expires: string = "";
+  ProductsList: any = [];
+  filterRequest: FilterParameters = {
     Size: 0,
     Page: 0
   }

@@ -9,7 +9,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 export class OrderCreatedComponent {
   constructor(private route: ActivatedRoute) { }
 
-  public id: number = 0;
+  id: number = 0;
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => this.id = params['id']);
