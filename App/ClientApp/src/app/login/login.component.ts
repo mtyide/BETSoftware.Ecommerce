@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import { Login } from './../models/login.module'
 
@@ -11,13 +11,14 @@ import { Login } from './../models/login.module'
 export class LoginComponent {
   loginRequest: Login = {
     Password: '',
-    Username: ''
+    Username: '',
+    EmailAddress: ''
   }
 
-  constructor(private service: ApiService, private router: Router) { }
+  constructor(private service: ApiService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-
+    this.route.params.subscribe((params: Params) => this.loginRequest.Username = params['id']);
   }
 
   loginUser() {

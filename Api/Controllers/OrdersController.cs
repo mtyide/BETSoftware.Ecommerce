@@ -50,7 +50,7 @@ namespace Api.Controllers
         [Route("insertOrder")]
         public async Task<IActionResult> PostOrder([FromBody] OrderInDto orderDto)
         {
-            if (!ModelState.IsValid) { return null; }
+            if (!ModelState.IsValid) { return NotFound(); }
 
             var order = _mapper.Map<Order>(orderDto);
             order.Date = DateTime.UtcNow;

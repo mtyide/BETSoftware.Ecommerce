@@ -27,6 +27,10 @@ export class ApiService {
     return this.http.post<any>(this.ApiUrl + "/users/login", val);
   }
 
+  createUser(val: Login) {
+    return this.http.post<any>(this.ApiUrl + "/users/insertUser", val);
+  }
+
   insertOrder(val: Order): Observable<any> {
     return this.http.post<any>(this.ApiUrl + "/orders/insertOrder", val);
   }

@@ -10,6 +10,7 @@
         <input type="password" class="form-control" id="password" name="password" maxlength="13" [(ngModel)]="loginRequest.Password">
       </div>
       <button type="submit" class="btn btn-primary">Login</button>
+      <p><a class="nav-link text-dark" [routerLink]="['/login/create']">Create New Account</a></p>
     </form>
   </div>
 </div>

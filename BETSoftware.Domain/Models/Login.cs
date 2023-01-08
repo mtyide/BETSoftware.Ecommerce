@@ -14,5 +14,9 @@ namespace BETSoftware.Domain.Models
         [MaxLength(13)]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+
+        [Required]
+        [MaxLength(75)]
+        public string EmailAddress { get; set; }
     }
 }

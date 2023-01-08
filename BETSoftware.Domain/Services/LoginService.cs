@@ -11,6 +11,11 @@ namespace BETSoftware.Domain.Services
             _repository = repository;
         }
 
+        public Task<Login> Create(Login login)
+        {
+            return _repository.Create(login);
+        }
+
         public Task<Login> GetLogin(Login login)
         {
             return _repository.GetLogin(login);

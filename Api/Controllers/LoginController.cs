@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BETSoftware.Domain.Commands;
 using BETSoftware.Domain.Models;
 using BETSoftware.Domain.Models.Dtos;
 using BETSoftware.Domain.Queries;
@@ -19,6 +20,18 @@ namespace Api.Controllers
             _mediator = mediator;
             _mapper = mapper;
             _logger = logger;
+        }
+
+        [HttpPost]
+        [Route("insertUser")]
+        public async Task<IActionResult> PostLogin([FromBody] LoginInDto loginDto)
+        {
+            if (!ModelState.IsValid) { return NotFound(); }
+
+            var login = _mapper.Map<Login>(loginDto);
+            var result = await _mediator.Send(new InsertLoginCommand(login));
+
+            return Ok(result);
         }
 
         [HttpPost]

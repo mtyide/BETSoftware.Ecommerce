@@ -15,6 +15,7 @@ import { ErrorComponent } from './error/error.component';
 import { ApiService } from './services/api.service';
 import { AppRoutingModule } from './app-routing.module';
 import { OrderCreatedComponent } from './order.created/order.created.component';
+import { CreateComponent } from './login/create/create.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { OrderCreatedComponent } from './order.created/order.created.component';
     LoginComponent,
     ProductsComponent,
     ErrorComponent,
-    OrderCreatedComponent
+    OrderCreatedComponent,
+    CreateComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
