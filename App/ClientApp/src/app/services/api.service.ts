@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs'
 import { environment } from '../../environments/environment';
 import { Login } from './../models/login.module'
-import { FilterParameters } from './../models/filter.module'
 import { Product } from './../models/product.module'
 import { Order } from '../models/order.module';
 
