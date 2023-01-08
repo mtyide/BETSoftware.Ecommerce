@@ -15,6 +15,7 @@ import { PageEvent } from '@angular/material/paginator';
 export class ProductsComponent {
   constructor(private service: ApiService, private route: ActivatedRoute, private router: Router) { }
 
+  imagesBaseUri: string = this.service.ImagesUrl;
   pageIndex: number = 0;
   pageSize: number = 0;
   length: number = 0;

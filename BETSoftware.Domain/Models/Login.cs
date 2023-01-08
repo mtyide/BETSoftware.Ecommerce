@@ -8,11 +8,11 @@ namespace BETSoftware.Domain.Models
 
         [Required]
         [MaxLength(75)]
-        public string? Username { get; set; }
+        public string Username { get; set; }
 
         [Required]
         [MaxLength(13)]
         [DataType(DataType.Password)]
-        public string? Password { get; set; }
+        public string Password { get; set; }
     }
 }
