@@ -31,6 +31,8 @@ Password: BANDil@123456
 BETSoftware.Api  
 BETSoftware.App  
 Just make sure that both projects are launched at the same time. Use App to login or Api to test endpoints (Swagger API)  
+# Requirements
+Change urls in the App's environment component (environments folder) => baseApiUrl & baseImagesUrl
 # Project Notes
 Start: 05 January 2023  
 Completion: 09 January 2023  
