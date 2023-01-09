@@ -11,11 +11,11 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ProductsComponent } from './products/products.component';
 import { ErrorComponent } from './error/error.component';
+import { OrderCreatedComponent } from './order.created/order.created.component';
+import { CreateComponent } from './login/create/create.component';
 
 import { ApiService } from './services/api.service';
 import { AppRoutingModule } from './app-routing.module';
-import { OrderCreatedComponent } from './order.created/order.created.component';
-import { CreateComponent } from './login/create/create.component';
 
 @NgModule({
   declarations: [
