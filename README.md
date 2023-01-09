@@ -29,4 +29,19 @@ Password: BANDil@123456
 BETSoftware.Api  
 BETSoftware.App  
 Just make sure that both projects are launched at the same time. Use App to login or Api to test endpoints (Swagger API)  
-ENJOY!!!
+# Project Notes
+Completion: 09 January 2023  
+IDE: Visual Studio 2022 (Api) & Visual Studio Code (App)  
+Database: SQL Server 2022  
+Design: MediatR (Design Pattern) & DDD (Domain Driven Design)  
+Architecture: Microservice  
+Target Deployment: Microsoft Azure
+# Dependencies
+NodeJS  
+AngularJS/2+  
+Entity Framework Core  
+Auto Mapper  
+Auto Mapper Extensions  
+SQL Client
+# Copyright
+Author: Yandisa Mtyide. 2023 VS Projects
