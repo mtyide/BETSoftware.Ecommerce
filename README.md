@@ -28,5 +28,5 @@ Password: BANDil@123456
 # Multiple StartUp Projects
 BETSoftware.Api  
 BETSoftware.App  
-Just make sre that both projects are launched at the same time. Use App to login or Api to test endpoints (Swagger API)  
-ENJOY!!! Yandisa Mtyide Exhibition Projects
+Just make sure that both projects are launched at the same time. Use App to login or Api to test endpoints (Swagger API)  
+ENJOY!!!
