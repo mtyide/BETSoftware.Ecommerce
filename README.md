@@ -7,7 +7,8 @@ You can use the Swagger API to test data creation (Products)
 The UI (ASP.NET Core with AngularJS/MVC/ReactJS) will be used to create Orders and manage the Checkout process of the eCommerce site once API is completed
 # Not included
 BackOffice to manage Products IS NOT part of this assessment. Refer to Swagger API to test endpoints (Products). Products are NOT deleted but rather marked/flagged as INACTIVE, same applies to ORDERS  
-Creation of Users. They are pre-populated due to time constraints. Refer to DB script
+Creation of Users. They are pre-populated due to time constraints. Refer to DB script  
+Logging
 # Login Controller
 Yandisa's Notes - We can assume Api Key (Guid) will be used for authorization after successful authentication  
 Yandisa's Notes - In a real world, oAuth (JWT) can be used instead to authorize users  
@@ -36,7 +37,10 @@ IDE: Visual Studio 2022 (Api) & Visual Studio Code (App)
 Database: SQL Server 2022  
 Design: MediatR (Design Pattern) & DDD (Domain Driven Design)  
 Architecture: Microservice  
-Target Deployment: Microsoft Azure (Pipelines)
+Target Deployment: Microsoft Azure (Pipelines)  
+Frontend: AngularJS/2+  
+Backend: ASP.NET Core (6.0)  
+Language: C#.NET 6.0
 # Dependencies
 NodeJS  
 AngularJS/2+  
