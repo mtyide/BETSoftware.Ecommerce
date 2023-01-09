@@ -1,5 +1,5 @@
 # BETSoftware.Ecommerce
-Ecommerce assessment for BET Software as per requirements.
+Light/basic Ecommerce assessment for BET Software as per requirements.
 # Swagger UI/API
 Test Api endpoints => BETSoftware.Api
 # Not included
