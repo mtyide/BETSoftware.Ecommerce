@@ -18,3 +18,10 @@ SQL Server 2022
 MediatR (Design Pattern)  
 ASP.NET Core with AngularJS  
 C#.NET 6.0  
+# Restore or Import Data-Tier Application
+BETSoftware.Data project 
+Folder: Database 
+Filename: betsoftware.bacpac 
+# Sample Login Details
+Username: mtyide 
+Password: BANDil@123456
