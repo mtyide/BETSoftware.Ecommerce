@@ -19,9 +19,9 @@ MediatR (Design Pattern)
 ASP.NET Core with AngularJS  
 C#.NET 6.0  
 # Restore or Import Data-Tier Application
-BETSoftware.Data project 
-Folder: Database 
-Filename: betsoftware.bacpac 
+BETSoftware.Data project  
+Folder: Database  
+Filename: betsoftware.bacpac  
 # Sample Login Details
-Username: mtyide 
+Username: mtyide  
 Password: BANDil@123456
