@@ -1,7 +1,7 @@
 # BETSoftware.Ecommerce
 Light/basic eCommerce assessment for BET Software as per requirements.
 # Swagger UI/API
-Test Api endpoints => BETSoftware.Api
+Test Api endpoints => BETSoftware.Ecommerce.Api
 # Not included
 BackOffice to manage Products IS NOT part of this assessment. Refer to Swagger API to test endpoints (Products). Products are NOT deleted but rather marked/flagged as INACTIVE, same applies to ORDERS  
 Creation of Users. They are pre-populated due to time constraints. Refer to DB script  
@@ -25,8 +25,8 @@ Filename: betsoftware.bacpac
 Username: mtyide  
 Password: BANDil@123456
 # Multiple StartUp Projects
-BETSoftware.Api  
-BETSoftware.App  
+BETSoftware.Ecommerce.Api  
+BETSoftware.Ecommerce.App  
 Just make sure that both projects are launched at the same time. Use App to login or Api to test endpoints (Swagger API)  
 # Requirements
 Change urls in the App's environment component (environments folder) => baseApiUrl & baseImagesUrl
