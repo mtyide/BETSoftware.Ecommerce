@@ -36,7 +36,7 @@ IDE: Visual Studio 2022 (Api) & Visual Studio Code (App)
 Database: SQL Server 2022  
 Design: MediatR (Design Pattern) & DDD (Domain Driven Design)  
 Architecture: Microservice  
-Target Deployment: Microsoft Azure
+Target Deployment: Microsoft Azure (Pipelines)
 # Dependencies
 NodeJS  
 AngularJS/2+  
