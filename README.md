@@ -11,7 +11,7 @@ Creation of Users. They are pre-populated due to time constraints. Refer to DB s
 Logging
 # Login Controller
 Notes:  
-We can assume Api Key (Guid) will be used for authorization after successful authentication  
+We can assume returned Api Key (Token) will be used for authorization after successful authentication  
 In a real world, oAuth (JWT) can be used instead to authorize users  
 The returned token is NOT saved or persisted for this assessment due to time constraints  
 # Tech stack
