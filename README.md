@@ -10,9 +10,9 @@ BackOffice to manage Products IS NOT part of this assessment. Refer to Swagger A
 Creation of Users. They are pre-populated due to time constraints. Refer to DB script  
 Logging
 # Login Controller
-Yandisa's Notes - We can assume Api Key (Guid) will be used for authorization after successful authentication  
-Yandisa's Notes - In a real world, oAuth (JWT) can be used instead to authorize users  
-Yandisa's Notes - The returned token is NOT saved or persisted for this assessment due to time constraints  
+We can assume Api Key (Guid) will be used for authorization after successful authentication  
+In a real world, oAuth (JWT) can be used instead to authorize users  
+The returned token is NOT saved or persisted for this assessment due to time constraints  
 # Tech stack
 ASP.NET Core 6.0 Web API  
 SQL Server 2022  
