@@ -27,7 +27,7 @@ namespace Api.Controllers
         [Route("getProducts")]
         public async Task<IActionResult> GetProducts()
         {
-            if (!ModelState.IsValid) { return NotFound(); }
+            if (!ModelState.IsValid) { return BadRequest(); }
 
             var result = await _mediator.Send(new GetProductsQuery());
             if (result == null) { return NotFound(); }
@@ -50,7 +50,7 @@ namespace Api.Controllers
         [Route("insertProduct")]
         public async Task<IActionResult> PostProduct([FromBody] ProductInDto productDto)
         {
-            if (!ModelState.IsValid) { return NotFound(); }
+            if (!ModelState.IsValid) { return BadRequest(); }
 
             var product = _mapper.Map<Product>(productDto);
             var result = await _mediator.Send(new InsertProductCommand(product));
@@ -62,7 +62,7 @@ namespace Api.Controllers
         [Route("updateProduct/{id}")]
         public async Task<IActionResult> Put(int id, [FromBody] ProductInDto productDto)
         {
-            if (!ModelState.IsValid) { return NotFound(); }
+            if (!ModelState.IsValid) { return BadRequest(); }
 
             var product = _mapper.Map<Product>(productDto);
             product.Id = id;
@@ -74,7 +74,7 @@ namespace Api.Controllers
         [Route("deleteProduct/{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            if (!ModelState.IsValid) { return NotFound(); }
+            if (!ModelState.IsValid) { return BadRequest(); }
 
             var result = await _mediator.Send(new DeleteProductCommand(id));
             return Ok(result);

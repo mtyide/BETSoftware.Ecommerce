@@ -27,7 +27,7 @@ namespace Api.Controllers
         [Route("getOrders")]
         public async Task<IActionResult> GetOrders()
         {
-            if (!ModelState.IsValid) { return NotFound(); }
+            if (!ModelState.IsValid) { return BadRequest(); }
 
             var result = await _mediator.Send(new GetOrdersQuery());
             if (result == null) { return NotFound(); }
@@ -50,7 +50,7 @@ namespace Api.Controllers
         [Route("insertOrder")]
         public async Task<IActionResult> PostOrder([FromBody] OrderInDto orderDto)
         {
-            if (!ModelState.IsValid) { return NotFound(); }
+            if (!ModelState.IsValid) { return BadRequest(); }
 
             var order = _mapper.Map<Order>(orderDto);
             order.Date = DateTime.UtcNow;
@@ -63,7 +63,7 @@ namespace Api.Controllers
         [Route("updateOrder/{id}")]
         public async Task<IActionResult> PutOrder(int id, [FromBody] OrderInDto orderDto)
         {
-            if (!ModelState.IsValid) { return NotFound(); }
+            if (!ModelState.IsValid) { return BadRequest(); }
 
             var order = _mapper.Map<Order>(orderDto);
             order.Id = id;

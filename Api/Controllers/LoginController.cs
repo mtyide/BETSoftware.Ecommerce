@@ -26,7 +26,7 @@ namespace Api.Controllers
         [Route("insertUser")]
         public async Task<IActionResult> PostLogin([FromBody] LoginInDto loginDto)
         {
-            if (!ModelState.IsValid) { return NotFound(); }
+            if (!ModelState.IsValid) { return BadRequest(); }
 
             var login = _mapper.Map<Login>(loginDto);
             var result = await _mediator.Send(new InsertLoginCommand(login));
@@ -38,7 +38,7 @@ namespace Api.Controllers
         [Route("login")]
         public async Task<IActionResult> Post([FromBody] LoginInDto loginDto)
         {
-            if (!ModelState.IsValid) { return NotFound(); }
+            if (!ModelState.IsValid) { return BadRequest(); }
 
             var login = _mapper.Map<Login>(loginDto);
             var result = await _mediator.Send(new GetLoginQuery(login));
