@@ -42,6 +42,7 @@ AngularJS/2+
 Entity Framework Core  
 Auto Mapper  
 Auto Mapper Extensions  
-SQL Client
+SQL Client  
+MediatR (CQRS)
 # Copyright
 Author: Yandisa Mtyide. 2023 VS Projects
