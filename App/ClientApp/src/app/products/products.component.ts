@@ -3,7 +3,6 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { Order } from '../models/order.module';
 import { Line } from '../models/line.module';
-import { FilterParameters } from './../models/filter.module'
 import { formatDate } from '@angular/common';
 import { PageEvent } from '@angular/material/paginator';
 
