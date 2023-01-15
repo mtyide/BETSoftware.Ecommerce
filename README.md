@@ -6,7 +6,7 @@ Test Api endpoints => BETSoftware.Ecommerce.Api
 BackOffice to manage Products IS NOT part of this assessment. Refer to Swagger API to test endpoints (Products)  
 Products are NOT deleted but rather marked/flagged as INACTIVE, same applies to ORDERS  
 Logging
-# Login Controller
+# Login Controller (BETSoftware.Ecommerce.Api)
 Notes:  
 We can assume returned Api Key (Token) will be used for authorization after successful authentication  
 In a real world, oAuth (JWT) can be used instead to authorize users  
