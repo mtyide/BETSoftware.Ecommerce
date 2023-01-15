@@ -7,7 +7,7 @@ BackOffice to manage Products IS NOT part of this assessment. Refer to Swagger A
 Products are NOT deleted but rather marked/flagged as INACTIVE, same applies to ORDERS  
 Logging
 # Login Controller (BETSoftware.Ecommerce.Api)
-Notes:  
+Notes (Endpoint -> users/login):  
 We can assume returned Api Key (Token) will be used for authorization after successful authentication  
 In a real world, oAuth (JWT) can be used instead to authorize users  
 The returned token is NOT saved or persisted for this assessment due to time constraints  
