@@ -3,7 +3,8 @@ Light/basic eCommerce assessment for BET Software as per requirements.
 # Swagger UI/API
 Test Api endpoints => BETSoftware.Ecommerce.Api
 # Not included
-BackOffice to manage Products IS NOT part of this assessment. Refer to Swagger API to test endpoints (Products). Products are NOT deleted but rather marked/flagged as INACTIVE, same applies to ORDERS  
+BackOffice to manage Products IS NOT part of this assessment. Refer to Swagger API to test endpoints (Products)  
+Products are NOT deleted but rather marked/flagged as INACTIVE, same applies to ORDERS  
 Logging
 # Login Controller
 Notes:  
