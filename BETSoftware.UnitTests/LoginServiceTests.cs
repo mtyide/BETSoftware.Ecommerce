@@ -9,6 +9,7 @@ using BETSoftware.Domain.Services;
 using BETSoftware.Domain.Models;
 using BETSoftware.Data.Repositories;
 using NuGet.Frameworks;
+using BETSoftware.Domain.Models.Dtos;
 
 namespace BETSoftware.UnitTests
 {
@@ -54,13 +55,12 @@ namespace BETSoftware.UnitTests
         [TestMethod]
         public async Task Can_Create_Login_Record_Async()
         {
-            var loginDetail = new Login
+            var loginDetail = new LoginInDto
             {
                 EmailAddress = "user@somedomain.com",
                 Password = "password@12321",
                 Username = "mtyide"
             };
-
             var product = _mapper.Map<Login>(loginDetail);
             var response = await _loginService.Create(product);
 
@@ -73,13 +73,12 @@ namespace BETSoftware.UnitTests
         [TestMethod]
         public async Task Can_Login_Async()
         {
-            var loginDetail = new Login
+            var loginDetail = new LoginInDto
             {
                 EmailAddress = "user@somedomain.com",
                 Password = "password@12321",
                 Username = "mtyide"
             };
-
             var login = _mapper.Map<Login>(loginDetail);
             var response = await _loginService.Create(login);
 

@@ -8,6 +8,7 @@ using BETSoftware.Data;
 using BETSoftware.Domain.Services;
 using BETSoftware.Domain.Models;
 using BETSoftware.Data.Repositories;
+using BETSoftware.Domain.Models.Dtos;
 
 namespace BETSoftware.UnitTests
 {
@@ -53,7 +54,7 @@ namespace BETSoftware.UnitTests
         [TestMethod]
         public async Task Can_Create_Product_Record_Async()
         {
-            var productDetail = new Product
+            var productDetail = new ProductInDto
             {
                 Active = true,
                 Description = "Product X Description",
@@ -61,14 +62,13 @@ namespace BETSoftware.UnitTests
                 Name = "Product X",
                 Price = 205.90M
             };
-
             var product = _mapper.Map<Product>(productDetail);
-            var response = await _productsService.Insert(product);
+            var insertedProduct = await _productsService.Insert(product);
 
-            Assert.IsNotNull(response);
-            Assert.IsNotNull(response);
-            Assert.IsTrue(response.Name.Equals("Product X"));
-            Assert.IsTrue(response.Active == true);
+            Assert.IsNotNull(insertedProduct);
+            Assert.IsNotNull(insertedProduct);
+            Assert.IsTrue(insertedProduct.Name.Equals("Product X"));
+            Assert.IsTrue(insertedProduct.Active == true);
 
             var products = await _productsService.GetAll();
 
@@ -80,7 +80,7 @@ namespace BETSoftware.UnitTests
         [TestMethod]
         public async Task Can_Update_Product()
         {
-            var productDetail = new Product
+            var productDetail = new ProductInDto
             {
                 Active = true,
                 Description = "Product X Description",
@@ -88,10 +88,9 @@ namespace BETSoftware.UnitTests
                 Name = "Product X",
                 Price = 205.90M
             };
-
             var product = _mapper.Map<Product>(productDetail);
-            var response = await _productsService.Insert(product);
-            var edited = response;
+            var insertedProduct = await _productsService.Insert(product);
+            var edited = insertedProduct;
             edited.Name = "Product Y";
             edited.Active = false;
 
@@ -104,9 +103,9 @@ namespace BETSoftware.UnitTests
         }
 
         [TestMethod]
-        public async Task Can_Get_Active_Products_Async()
+        public async Task Can_Delete_Product_Async()
         {
-            var productDetail = new Product
+            var productDetail = new ProductInDto
             {
                 Active = true,
                 Description = "Product X Description",
@@ -114,10 +113,33 @@ namespace BETSoftware.UnitTests
                 Name = "Product X",
                 Price = 205.90M
             };
+            var product = _mapper.Map<Product>(productDetail);
+            var insertedProduct = await _productsService.Insert(product);
 
+            Assert.IsNotNull(insertedProduct);
+            Assert.IsNotNull(insertedProduct);
+            Assert.IsTrue(insertedProduct.Name.Equals("Product X"));
+            Assert.IsTrue(insertedProduct.Active == true);
+
+            var deleteProduct = await _productsService.Delete(insertedProduct.Id);
+
+            Assert.IsNotNull(deleteProduct);
+            Assert.IsTrue(deleteProduct.Active == false);
+        }
+
+        [TestMethod]
+        public async Task Can_Get_Active_Products_Async()
+        {
+            var productDetail = new ProductInDto
+            {
+                Active = true,
+                Description = "Product X Description",
+                ImageUri = "/images/productx.png",
+                Name = "Product X",
+                Price = 205.90M
+            };
             var product = _mapper.Map<Product>(productDetail);
             await _productsService.Insert(product);
-
             var products = await _productsService.GetActive();
 
             Assert.IsNotNull(products);
@@ -128,7 +150,7 @@ namespace BETSoftware.UnitTests
         [TestMethod]
         public async Task Can_Get_All_Products_Async()
         {
-            var productDetail = new Product
+            var productDetail = new ProductInDto
             {
                 Active = true,
                 Description = "Product X Description",
@@ -136,10 +158,8 @@ namespace BETSoftware.UnitTests
                 Name = "Product X",
                 Price = 205.90M
             };
-
             var product = _mapper.Map<Product>(productDetail);
             await _productsService.Insert(product);
-
             var products = await _productsService.GetAll();
 
             Assert.IsNotNull(products);
