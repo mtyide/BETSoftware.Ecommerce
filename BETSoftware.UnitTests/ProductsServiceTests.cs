@@ -27,7 +27,6 @@ namespace BETSoftware.UnitTests
             {
                 configuration.AddProfile(new ProductProfile());
             });
-
             _mapper = mockMapperConfig.CreateMapper();
             #endregion
             #region Dependency Injection
@@ -74,7 +73,7 @@ namespace BETSoftware.UnitTests
             var products = await _productsService.GetAll();
 
             Assert.IsNotNull(products);
-            Assert.AreEqual(1, products.Count());
+            Assert.AreEqual(1, products.Count);
             Assert.IsTrue(products.First().Active == true);
         }
 
@@ -144,7 +143,7 @@ namespace BETSoftware.UnitTests
             var products = await _productsService.GetAll();
 
             Assert.IsNotNull(products);
-            Assert.AreEqual(1, products.Count());
+            Assert.AreEqual(1, products.Count);
             Assert.IsTrue(products.First().Active == true);
         }
     }
