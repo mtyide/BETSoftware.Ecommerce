@@ -55,6 +55,7 @@ namespace Api.Controllers
 
             if (result == null) { return NotFound(); }
 
+            #region JWT Handler
             var handler = new JwtSecurityTokenHandler();
             var key = Encoding.UTF8.GetBytes(_configuration.GetSection("JwtIssuerOptions")["Key"]);
             var descriptor = new SecurityTokenDescriptor
@@ -67,6 +68,7 @@ namespace Api.Controllers
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
             var token = handler.CreateToken(descriptor);
+            #endregion
 
             if (token == null) { return Unauthorized(); }
 
