@@ -104,7 +104,7 @@ namespace BETSoftware.UnitTests
         public async Task Can_Delete_Order_Async()
         {
             var user = GetCurrentUser();
-            var product = GetCurrentProduct();
+            var product = GetCurrentProduct().Result;
             var orderDetail = new OrderInDto
             {
                 Active = true,
@@ -122,7 +122,7 @@ namespace BETSoftware.UnitTests
             Assert.IsNotNull(insertedOrder);
             Assert.IsTrue(insertedOrder.Active == true);
 
-            var createLines = CreateOrderLines(product.Result, insertedOrder);
+            var createLines = CreateOrderLines(product, insertedOrder);
             insertedOrder.Lines = createLines;
 
             var editedOrder = await _ordersService.Update(insertedOrder);
