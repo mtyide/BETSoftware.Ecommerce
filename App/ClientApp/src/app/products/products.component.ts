@@ -14,6 +14,7 @@ import { PageEvent } from '@angular/material/paginator';
 export class ProductsComponent {
   constructor(private service: ApiService, private route: ActivatedRoute, private router: Router) { }
 
+  errorMessage: string = '';
   imagesBaseUri: string = this.service.ImagesUrl;
   pageIndex: number = 0;
   pageSize: number = 0;
@@ -71,8 +72,8 @@ export class ProductsComponent {
       next: () => {
         this.router.navigate(['created', id]);
       },
-      error: () => {
-        this.router.navigate(['error']);
+      error: (response) => {
+        this.errorMessage = "An error occured: " + response;
       }
     });
   }
@@ -85,8 +86,8 @@ export class ProductsComponent {
         this.pageIndex = 0;
         this.pageSize = 50;
       },
-      error: () => {
-        this.router.navigate(['error']);
+      error: (response) => {
+        this.errorMessage = "An error occured: " + response;
       }
     });
   }
@@ -128,8 +129,8 @@ export class ProductsComponent {
       next: (order) => {
         this.updateOrder(order, order.id);
       },
-      error: () => {
-        this.router.navigate(['error']);
+      error: (response) => {
+        this.errorMessage = "An error has occured: " + response;
       }
     });
   }

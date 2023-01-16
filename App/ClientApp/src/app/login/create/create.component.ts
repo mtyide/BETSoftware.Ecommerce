@@ -48,10 +48,10 @@ export class CreateComponent {
         next: (data) => {
           data ? this.router.navigate(['login', data.username]) : this.router.navigate(['error']);
         },
-        error: () => {
+        error: (response) => {
           this.checkCanProceed = false;
           this.disabled = '';
-          this.errorMessage = "Please specify all required details.";
+          this.errorMessage = "An error occured: " + response;
           document.getElementById('username')?.focus();
         }
       });

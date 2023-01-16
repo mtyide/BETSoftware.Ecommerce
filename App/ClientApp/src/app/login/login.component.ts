@@ -43,10 +43,10 @@ export class LoginComponent {
         next: (data) => {
           data ? this.router.navigate(['products', data.id, data.token]) : this.router.navigate(['error']);
         },
-        error: () => {
+        error: (response) => {
           this.valid = false;
           this.disabled = '';
-          this.errorMessage = "Invalid login details specified.";
+          this.errorMessage = "An error occured: " + response;
           document.getElementById('username')?.focus();
         }
       });

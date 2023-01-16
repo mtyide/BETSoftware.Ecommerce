@@ -11,7 +11,7 @@
       </div>
       <button type="submit" class="btn btn-primary" disabled="{{ disabled }}">Login</button>
       <p><a class="nav-link text-dark" [routerLink]="['/login/create']">Create New Account</a></p>
-      <p *ngIf="errorMessage" style="color: red;">{{errorMessage}}</p>
+      <p *ngIf="errorMessage" style="color: red;">{{ errorMessage }}</p>
       <p *ngIf="valid">Logging in...</p>
     </form>
   </div>

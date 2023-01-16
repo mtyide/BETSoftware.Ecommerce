@@ -1,7 +1,7 @@
 <p>Create Login Account</p>
 <div class="row">
   <div class="col-6">
-    <form #form="ngForm" (ngSubmit)="createUser()">
+    <form #form="ngForm" (ngSubmit)="createUser()" (keyup.enter)="createUser()">
       <div class="mb-3">
         <label for="username" class="form-label">Username</label>
         <input type="text" class="form-control" id="username" name="username" maxlength="75" [(ngModel)]="loginRequest.Username">
@@ -19,7 +19,7 @@
         <input type="password" class="form-control" id="confirm" name="confirm" maxlength="13" [(ngModel)]="confirmPassword">
       </div>
       <button type="submit" class="btn btn-primary" disabled="{{ disabled }}">Save</button>
-      <p *ngIf="errorMessage" style="color: red;">{{errorMessage}}</p>
+      <p *ngIf="errorMessage" style="color: red;">{{ errorMessage }}</p>
       <p *ngIf="checkCanProceed">Creating account...</p>
     </form>
   </div>
