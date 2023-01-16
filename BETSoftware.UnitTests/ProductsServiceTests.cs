@@ -63,12 +63,12 @@ namespace BETSoftware.UnitTests
             };
 
             var product = _mapper.Map<Product>(productDetail);
-            var response = _productsService.Insert(product);
+            var response = await _productsService.Insert(product);
 
             Assert.IsNotNull(response);
-            Assert.IsNotNull(response.Result);
-            Assert.IsTrue(response.Result.Name.Equals("Product X"));
-            Assert.IsTrue(response.Result.Active == true);
+            Assert.IsNotNull(response);
+            Assert.IsTrue(response.Name.Equals("Product X"));
+            Assert.IsTrue(response.Active == true);
 
             var products = await _productsService.GetAll();
 
@@ -78,7 +78,7 @@ namespace BETSoftware.UnitTests
         }
 
         [TestMethod]
-        public void Can_Update_Product()
+        public async Task Can_Update_Product()
         {
             var productDetail = new Product
             {
@@ -90,17 +90,17 @@ namespace BETSoftware.UnitTests
             };
 
             var product = _mapper.Map<Product>(productDetail);
-            var response = _productsService.Insert(product);
-            var edited = response.Result;
+            var response = await _productsService.Insert(product);
+            var edited = response;
             edited.Name = "Product Y";
             edited.Active = false;
 
-            var current = _productsService.Update(edited);
+            var current = await _productsService.Update(edited);
 
             Assert.IsNotNull(current);
-            Assert.IsNotNull(current.Result);
-            Assert.IsTrue(current.Result.Name.Equals("Product Y"));
-            Assert.IsTrue(current.Result.Active == false);
+            Assert.IsNotNull(current);
+            Assert.IsTrue(current.Name.Equals("Product Y"));
+            Assert.IsTrue(current.Active == false);
         }
 
         [TestMethod]
