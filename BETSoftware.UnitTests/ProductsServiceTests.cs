@@ -79,7 +79,7 @@ namespace BETSoftware.UnitTests
         }
 
         [TestMethod]
-        public void Can_Update_Customer()
+        public void Can_Update_Product()
         {
             var productDetail = new Product
             {
