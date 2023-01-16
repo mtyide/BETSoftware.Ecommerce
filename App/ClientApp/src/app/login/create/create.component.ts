@@ -9,23 +9,22 @@ import { ApiService } from '../../services/api.service';
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent {
+
+  disabled: string = '';
+  errorMessage: string = '';
+  confirmPassword: string = '';
+  checkCanProceed: boolean = false;
   loginRequest: Login = {
     Password: '',
     Username: '',
     EmailAddress: ''
   }
 
-  confirmPassword: string = '';
-  checkCanProceed: boolean = true;
-
   constructor(private service: ApiService, private router: Router) { }
-
-  ngOnInit(): void {
-
-  }
 
   createUser() {
     this.checkCanProceed = true;
+    this.errorMessage = '';
 
     if (this.confirmPassword === undefined
       || this.confirmPassword === null
@@ -42,15 +41,18 @@ export class CreateComponent {
     if (this.confirmPassword !== this.loginRequest.Password) { this.checkCanProceed = false; }
 
     if (this.checkCanProceed === false) {
-      alert('Please enter all required fields to continue');
+      this.errorMessage = 'Please enter all required fields to continue';
     } else {
+      this.disabled = 'disabled';
       this.service.createUser(this.loginRequest).subscribe({
         next: (data) => {
           data ? this.router.navigate(['login', data.username]) : this.router.navigate(['error']);
         },
-        error: (response) => {
-          console.log(response);
-          this.router.navigate(['error']);
+        error: () => {
+          this.checkCanProceed = false;
+          this.disabled = '';
+          this.errorMessage = "Please specify all required details.";
+          document.getElementById('username')?.focus();
         }
       });
     }

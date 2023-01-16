@@ -47,12 +47,10 @@ export class ProductsComponent {
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => this.id = params['id']);
     this.route.params.subscribe((params: Params) => this.token = params['token']);
-    console.log(this.token);
     this.getProductsList();
   }
 
   pageNavigations(event: PageEvent) {
-    console.log(event);
     this.pageIndex = event.pageIndex;
     this.pageSize = event.pageSize;
     this.getProductsList();
@@ -73,8 +71,7 @@ export class ProductsComponent {
       next: () => {
         this.router.navigate(['created', id]);
       },
-      error: (response) => {
-        console.log(response);
+      error: () => {
         this.router.navigate(['error']);
       }
     });

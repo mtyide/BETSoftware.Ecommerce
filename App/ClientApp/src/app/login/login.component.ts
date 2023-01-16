@@ -45,7 +45,7 @@ export class LoginComponent {
         },
         error: () => {
           this.valid = false;
-          this.disabled = ''
+          this.disabled = '';
           this.errorMessage = "Invalid login details specified.";
           document.getElementById('username')?.focus();
         }
