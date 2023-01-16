@@ -32,22 +32,16 @@ export class LoginComponent {
     if (this.loginRequest.Username === ''
       || this.loginRequest.Username === null
       || this.loginRequest.Username === undefined) { this.valid = false }
-
     if (this.loginRequest.Password === ''
       || this.loginRequest.Password === null
       || this.loginRequest.Password === undefined) { this.valid = false }
-
     if (!this.valid) { this.errorMessage = "Invalid login details specified."; }
-
-    console.log(this.loginRequest);
-    console.log(this.valid);
-    console.log(this.errorMessage);
 
     if (this.valid) {
       this.disabled = 'disabled';
       this.service.loginCurrentUser(this.loginRequest).subscribe({
         next: (data) => {
-          data ? this.router.navigate(['products', data.id]) : this.router.navigate(['error']);
+          data ? this.router.navigate(['products', data.id, data.token]) : this.router.navigate(['error']);
         },
         error: () => {
           this.valid = false;

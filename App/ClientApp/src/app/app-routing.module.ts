@@ -9,7 +9,7 @@ import { OrderCreatedComponent } from './order.created/order.created.component';
 import { CreateComponent } from './login/create/create.component';
 
 const routes: Routes = [
-  { path: 'products/:id', component: ProductsComponent },
+  { path: 'products/:id/:token', component: ProductsComponent },
   { path: 'login', component: LoginComponent },
   { path: 'error', component: ErrorComponent },
   { path: 'created/:id', component: OrderCreatedComponent },

@@ -25,6 +25,7 @@ export class ProductsComponent {
   checkoutDisabled: string = "disabled";
   createOrderDisabled: string = "disabled";
   id: number = 0;
+  token: string = '';
   subTotal: any = [];
   
   order: Order = {
@@ -40,12 +41,13 @@ export class ProductsComponent {
   };
   grandTotal: number = 0;
   totalAmount: number = 0;
-  token: string = "";
   expires: string = "";
   ProductsList: any = [];
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => this.id = params['id']);
+    this.route.params.subscribe((params: Params) => this.token = params['token']);
+    console.log(this.token);
     this.getProductsList();
   }
 
