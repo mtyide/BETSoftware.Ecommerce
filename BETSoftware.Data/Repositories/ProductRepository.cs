@@ -36,6 +36,8 @@ namespace BETSoftware.Data.Repositories
             return result!;
         }
 
+        public Task<List<Product>> GetActive() => _products.Where(x => x.Active.Value.Equals(true)).ToListAsync();
+
         public Task<List<Product>> GetAll() => _products.Where(x => x.Active.Value).ToListAsync();
 
         public async Task<Product> Insert(Product product)

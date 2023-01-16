@@ -21,6 +21,11 @@ namespace BETSoftware.Domain.Services
             return _repository.Get(id);
         }
 
+        public Task<List<Product>> GetActive()
+        {
+            return _repository.GetActive();
+        }
+
         public Task<List<Product>> GetAll()
         {
             return _repository.GetAll();

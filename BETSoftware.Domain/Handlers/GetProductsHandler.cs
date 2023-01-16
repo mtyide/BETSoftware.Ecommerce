@@ -5,7 +5,7 @@ using MediatR;
 
 namespace BETSoftware.Domain.Handlers
 {
-    public class GetProductsHandler : IRequestHandler<GetProductsQuery, List<Product>>
+    public class GetProductsHandler : IRequestHandler<GetActiveProductsQuery, List<Product>>
     {
         private readonly IProductService _service;
 
@@ -14,6 +14,6 @@ namespace BETSoftware.Domain.Handlers
             _service = service;
         }
 
-        public Task<List<Product>> Handle(GetProductsQuery request, CancellationToken cancellationToken) => _service.GetAll();
+        public Task<List<Product>> Handle(GetActiveProductsQuery request, CancellationToken cancellationToken) => _service.GetAll();
     }
 }

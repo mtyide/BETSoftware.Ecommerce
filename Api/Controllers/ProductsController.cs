@@ -29,7 +29,7 @@ namespace Api.Controllers
         {
             if (!ModelState.IsValid) { return BadRequest(); }
 
-            var result = await _mediator.Send(new GetProductsQuery());
+            var result = await _mediator.Send(new GetActiveProductsQuery());
             if (result == null) { return NotFound(); }
 
             return Ok(result);
@@ -40,6 +40,17 @@ namespace Api.Controllers
         public async Task<IActionResult> GetProductById(int id)
         {
             var result = await _mediator.Send(new GetProductByIdQuery(id));
+
+            if (result == null) { return NotFound(); }
+
+            return Ok(result);
+        }
+
+        [HttpGet]
+        [Route("getActiveProducts")]
+        public async Task<IActionResult> GetActiveProducts()
+        {
+            var result = await _mediator.Send(new GetActiveProductsQuery());
 
             if (result == null) { return NotFound(); }
 

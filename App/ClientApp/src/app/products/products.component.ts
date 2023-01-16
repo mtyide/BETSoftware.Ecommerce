@@ -42,7 +42,7 @@ export class ProductsComponent {
   };
   grandTotal: number = 0;
   totalAmount: number = 0;
-  expires: string = "";
+  expires: string = '';
   ProductsList: any = [];
 
   ngOnInit(): void {
@@ -58,6 +58,7 @@ export class ProductsComponent {
   }
 
   updateOrder(order: Order, id: number) {
+    this.errorMessage = '';
     order.Lines = [{ length: this.selectedProductIds.length }];
     for (var i = 0; i <= (this.selectedProductIds.length - 1); i++) {
       const line = new Line();
@@ -79,6 +80,7 @@ export class ProductsComponent {
   }
 
   getProductsList() {
+    this.errorMessage = '';
     this.service.getProducts().subscribe({
       next: (products) => {
         this.ProductsList = products;
@@ -117,6 +119,7 @@ export class ProductsComponent {
   }
 
   createOrder() {
+    this.errorMessage = '';
     this.order.Active = true;
     this.order.CustomerId = this.id;
     this.order.Date = this.date;

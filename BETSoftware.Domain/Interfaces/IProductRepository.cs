@@ -10,5 +10,6 @@ namespace BETSoftware.Domain.Interfaces
         Task<Product> Insert(Product product);
         Task<Product> Update(Product product);
         Task<int> Commit();
+        Task<List<Product>> GetActive();
     }
 }

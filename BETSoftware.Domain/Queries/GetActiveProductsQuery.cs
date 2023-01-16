@@ -3,5 +3,5 @@ using MediatR;
 
 namespace BETSoftware.Domain.Queries
 {
-    public record GetProductsQuery : IRequest<List<Product>>;
+    public record GetActiveProductsQuery() : IRequest<List<Product>>;
 }

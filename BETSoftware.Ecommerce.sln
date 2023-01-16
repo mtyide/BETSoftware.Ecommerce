@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BETSoftware.Domain", "BETSo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BETSoftware.Data", "BETSoftware.Data\BETSoftware.Data.csproj", "{81CAC884-0EB6-408A-A370-A5F327FBAEF5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App", "App\App.csproj", "{FAB6EBAD-17DC-4DD8-8533-051B2C582A87}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App", "App\App.csproj", "{FAB6EBAD-17DC-4DD8-8533-051B2C582A87}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BETSoftware.UnitTests", "BETSoftware.UnitTests\BETSoftware.UnitTests.csproj", "{E1C8E6D8-AF69-40C5-AE8F-7E62B31C4182}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{FAB6EBAD-17DC-4DD8-8533-051B2C582A87}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FAB6EBAD-17DC-4DD8-8533-051B2C582A87}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FAB6EBAD-17DC-4DD8-8533-051B2C582A87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1C8E6D8-AF69-40C5-AE8F-7E62B31C4182}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1C8E6D8-AF69-40C5-AE8F-7E62B31C4182}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1C8E6D8-AF69-40C5-AE8F-7E62B31C4182}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1C8E6D8-AF69-40C5-AE8F-7E62B31C4182}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
