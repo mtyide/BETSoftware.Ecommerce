@@ -82,6 +82,7 @@ namespace BETSoftware.UnitTests
             Assert.IsNotNull(insertedOrder);
             Assert.IsNotNull(insertedOrder);
             Assert.IsTrue(insertedOrder.Active == true);
+            Assert.IsTrue(insertedOrder.CustomerId == user.Id);
 
             var createLines = CreateOrderLines(product.Result, insertedOrder);
             insertedOrder.Lines = createLines;
@@ -121,6 +122,7 @@ namespace BETSoftware.UnitTests
             Assert.IsNotNull(insertedOrder);
             Assert.IsNotNull(insertedOrder);
             Assert.IsTrue(insertedOrder.Active == true);
+            Assert.IsTrue(insertedOrder.CustomerId == user.Id);
 
             var createLines = CreateOrderLines(product, insertedOrder);
             insertedOrder.Lines = createLines;
