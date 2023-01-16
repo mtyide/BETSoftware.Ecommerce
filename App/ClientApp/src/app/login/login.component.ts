@@ -9,6 +9,10 @@ import { Login } from './../models/login.module'
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+
+  disabled: string = '';
+  valid: boolean = false;
+  errorMessage: string = '';
   loginRequest: Login = {
     Password: '',
     Username: '',
@@ -22,14 +26,36 @@ export class LoginComponent {
   }
 
   loginUser() {
-    this.service.loginCurrentUser(this.loginRequest).subscribe({
-      next: (data) => {
-        data ? this.router.navigate(['products', data.id]) : this.router.navigate(['error']);
-      },
-      error: (response) => {
-        console.log(response);
-        this.router.navigate(['error']);
-      }
-    });
+    this.errorMessage = '';
+    this.valid = true;
+
+    if (this.loginRequest.Username === ''
+      || this.loginRequest.Username === null
+      || this.loginRequest.Username === undefined) { this.valid = false }
+
+    if (this.loginRequest.Password === ''
+      || this.loginRequest.Password === null
+      || this.loginRequest.Password === undefined) { this.valid = false }
+
+    if (!this.valid) { this.errorMessage = "Invalid login details specified."; }
+
+    console.log(this.loginRequest);
+    console.log(this.valid);
+    console.log(this.errorMessage);
+
+    if (this.valid) {
+      this.disabled = 'disabled';
+      this.service.loginCurrentUser(this.loginRequest).subscribe({
+        next: (data) => {
+          data ? this.router.navigate(['products', data.id]) : this.router.navigate(['error']);
+        },
+        error: () => {
+          this.valid = false;
+          this.disabled = ''
+          this.errorMessage = "Invalid login details specified.";
+          document.getElementById('username')?.focus();
+        }
+      });
+    }    
   }
 }

@@ -86,8 +86,7 @@ export class ProductsComponent {
         this.pageIndex = 0;
         this.pageSize = 50;
       },
-      error: (response) => {
-        console.log(response);
+      error: () => {
         this.router.navigate(['error']);
       }
     });
@@ -130,8 +129,7 @@ export class ProductsComponent {
       next: (order) => {
         this.updateOrder(order, order.id);
       },
-      error: (response) => {
-        console.log(response);
+      error: () => {
         this.router.navigate(['error']);
       }
     });
