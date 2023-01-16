@@ -4,10 +4,13 @@ using BETSoftware.Domain;
 using BETSoftware.Domain.Interfaces;
 using BETSoftware.Domain.Services;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Configuration;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -48,14 +51,32 @@ builder.Services.AddLogging(logging =>
     logging.AddConfiguration(builder.Configuration.GetSection("Logging"));
 });
 
-var app = builder.Build();
+builder.Services.AddAuthentication(x =>
+{
+    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(o =>
+{
+    var Key = Encoding.UTF8.GetBytes(builder.Configuration.GetSection("JwtIssuerOptions")["Key"]);
+    o.SaveToken = true;
+    o.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = false,
+        ValidateAudience = false,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = builder.Configuration.GetSection("JwtIssuerOptions")["Issuer"],
+        ValidAudience = builder.Configuration.GetSection("JwtIssuerOptions")["Audience"],
+        IssuerSigningKey = new SymmetricSecurityKey(Key)
+    };
+});
 
+var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
 app.UseCors(x => x
             .SetIsOriginAllowed(origin => true)
             .AllowAnyMethod()
@@ -66,13 +87,14 @@ app.UseHttpLogging();
 
 app.UseStaticFiles(new StaticFileOptions
 {
-    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(),"Images")),
+    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "Images")),
     RequestPath = "/Images"
 });
 
 app.UseCookiePolicy();
-
 app.UseRouting();
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.UseEndpoints(endpoints =>
 {

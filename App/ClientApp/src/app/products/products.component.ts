@@ -48,6 +48,7 @@ export class ProductsComponent {
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => this.id = params['id']);
     this.route.params.subscribe((params: Params) => this.token = params['token']);
+    console.log(this.token);
     this.getProductsList();
   }
 
@@ -69,7 +70,7 @@ export class ProductsComponent {
       order.Lines.push(line);
     }
 
-    this.service.updateOrder(order, id).subscribe({
+    this.service.updateOrder(order, id, this.token).subscribe({
       next: () => {
         this.router.navigate(['created', id]);
       },
@@ -81,7 +82,7 @@ export class ProductsComponent {
 
   getProductsList() {
     this.errorMessage = '';
-    this.service.getProducts().subscribe({
+    this.service.getProducts(this.token).subscribe({
       next: (products) => {
         this.ProductsList = products;
         this.length = this.ProductsList.length;
@@ -128,7 +129,7 @@ export class ProductsComponent {
     this.order.ShippingRequired = true;
     this.order.ShippingTax = 14.5;
 
-    this.service.insertOrder(this.order).subscribe({
+    this.service.insertOrder(this.order, this.token).subscribe({
       next: (order) => {
         this.updateOrder(order, order.id);
       },

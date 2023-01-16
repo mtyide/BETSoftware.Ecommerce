@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs'
 import { environment } from '../../environments/environment';
 import { Login } from './../models/login.module'
@@ -10,32 +10,55 @@ import { Order } from '../models/order.module';
   providedIn: 'root'
 })
 export class ApiService {
+  url: string = '';
   readonly ApiUrl: string = environment.baseApiUrl;
   readonly ImagesUrl: string = environment.baseImagesUrl;
 
   constructor(private http: HttpClient) { }
 
-  getProducts() : Observable<Product[]> {
-    return this.http.get<Product[]>(this.ApiUrl + "/products/getProducts");
+  getProducts(token: string): Observable<Product[]> {
+    const auth = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    this.url = this.ApiUrl + '/products/getProducts';
+    return this.http.get<Product[]>(this.url, { headers: auth });
   }
 
-  getProductsById(val: number) : Observable<Product> {
-    return this.http.get<Product>(this.ApiUrl + "/products/getProductsById" + val);
+  getProductsById(val: number, token: string): Observable<Product> {
+    const auth = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    this.url = this.ApiUrl + "/products/getProductsById" + val;
+    return this.http.get<Product>(this.url, { headers: auth });
   }
 
   loginCurrentUser(val: Login) {
-    return this.http.post<any>(this.ApiUrl + "/users/login", val);
+    this.url = this.ApiUrl + "/users/login";
+    return this.http.post<any>(this.url, val);
   }
 
   createUser(val: Login) {
-    return this.http.post<any>(this.ApiUrl + "/users/insertUser", val);
+    this.url = this.ApiUrl + "/users/insertUser";
+    return this.http.post<any>(this.url, val);
   }
 
-  insertOrder(val: Order): Observable<any> {
-    return this.http.post<any>(this.ApiUrl + "/orders/insertOrder", val);
+  insertOrder(val: Order, token: string): Observable<any> {
+    const auth = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    this.url = this.ApiUrl + "/orders/insertOrder";
+    return this.http.post<any>(this.url, val, { headers: auth });
   }
 
-  updateOrder(val: Order, id: number): Observable<Order> {
-    return this.http.put<Order>(this.ApiUrl + "/orders/updateOrder/" + id, val);
+  updateOrder(val: Order, id: number, token: string): Observable<Order> {
+    const auth = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    this.url = this.ApiUrl + "/orders/updateOrder/" + id;
+    return this.http.put<Order>(this.url, val, { headers: auth });
   }
 }

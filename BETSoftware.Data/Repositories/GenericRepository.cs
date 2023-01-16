@@ -29,7 +29,7 @@ namespace BETSoftware.Data.Repositories
             return entity;
         }
 
-        public async Task<T?> Get(int id)
+        public async Task<T> Get(int id)
         {
             return await _entity.FindAsync(id);
         }

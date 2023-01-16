@@ -5,10 +5,12 @@ using BETSoftware.Domain.Models;
 using BETSoftware.Domain.Models.Dtos;
 using BETSoftware.Domain.Queries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers
 {
+    [Authorize]
     [Route("products")]
     [ApiController]
     public class ProductsController : ControllerBase
