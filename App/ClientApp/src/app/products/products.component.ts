@@ -12,7 +12,7 @@ import { PageEvent } from '@angular/material/paginator';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent {
-  constructor(private service: ApiService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private service: ApiService, private route: ActivatedRoute, private router: Router, private storage: Storage) { }
 
   errorMessage: string = '';
   imagesBaseUri: string = this.service.ImagesUrl;
@@ -26,7 +26,7 @@ export class ProductsComponent {
   checkoutDisabled: string = "disabled";
   createOrderDisabled: string = "disabled";
   id: number = 0;
-  token: string = '';
+  token: any;
   subTotal: any = [];
   
   order: Order = {
@@ -47,9 +47,14 @@ export class ProductsComponent {
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => this.id = params['id']);
-    this.route.params.subscribe((params: Params) => this.token = params['token']);
-    console.log(this.token);
-    this.getProductsList();
+    this.token = this.storage.getItem('token');
+    if (this.token === null || this.token === undefined
+          || this.id === 0 || this.id === undefined) {
+      this.router.navigate(['login']);
+    }
+    else {
+      this.getProductsList();
+    }
   }
 
   pageNavigations(event: PageEvent) {
@@ -75,7 +80,7 @@ export class ProductsComponent {
         this.router.navigate(['created', id]);
       },
       error: (response) => {
-        this.errorMessage = "An error occured: " + response;
+        this.errorMessage = "An error occured: " + response.data;
       }
     });
   }
@@ -90,7 +95,7 @@ export class ProductsComponent {
         this.pageSize = 50;
       },
       error: (response) => {
-        this.errorMessage = "An error occured: " + response;
+        this.errorMessage = "An error occured: " + response.data;
       }
     });
   }
@@ -107,7 +112,6 @@ export class ProductsComponent {
   getGrandTotal() {
     this.grandTotal = 0;
     for (var i = 0; i <= (this.selectedProductQty.length - 1); i++) {
-      console.log(this.subTotal[i]);
       if (this.subTotal[i] === NaN || this.subTotal[i] === undefined) { continue; }
       this.grandTotal += this.subTotal[i];
     }

@@ -51,7 +51,7 @@ export class CreateComponent {
         error: (response) => {
           this.checkCanProceed = false;
           this.disabled = '';
-          this.errorMessage = "An error occured: " + response;
+          this.errorMessage = "An error occured: " + response.data;
           document.getElementById('username')?.focus();
         }
       });

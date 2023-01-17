@@ -19,7 +19,7 @@ export class LoginComponent {
     EmailAddress: ''
   }
 
-  constructor(private service: ApiService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private service: ApiService, private router: Router, private route: ActivatedRoute, private storage: Storage) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => this.loginRequest.Username = params['id']);
@@ -41,12 +41,14 @@ export class LoginComponent {
       this.disabled = 'disabled';
       this.service.loginCurrentUser(this.loginRequest).subscribe({
         next: (data) => {
-          data ? this.router.navigate(['products', data.id, data.token]) : this.router.navigate(['error']);
+          this.storage.setItem('id', data.id.toString());
+          this.storage.setItem('token', data.token);
+          data ? this.router.navigate(['products', data.id]) : this.router.navigate(['error']);
         },
         error: (response) => {
           this.valid = false;
           this.disabled = '';
-          this.errorMessage = "An error occured: " + response;
+          this.errorMessage = "An error occured: " + response.data;
           document.getElementById('username')?.focus();
         }
       });

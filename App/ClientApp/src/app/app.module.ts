@@ -38,12 +38,16 @@ import { AppRoutingModule } from './app-routing.module';
     ReactiveFormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'products', component: ProductsComponent },
-      { path: 'login', component: LoginComponent }
+      { path: 'products/:id', component: ProductsComponent },
+      { path: 'login', component: LoginComponent },
+      { path: 'error', component: ErrorComponent },
+      { path: 'created/:id', component: OrderCreatedComponent },
+      { path: 'login/create', component: CreateComponent },
+      { path: 'login/:id', component: LoginComponent }
     ]),
     AppRoutingModule
   ],
-  providers: [ApiService],
+  providers: [ApiService, { provide: Storage, useValue: localStorage }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
