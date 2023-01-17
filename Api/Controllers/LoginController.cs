@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using Api.Security;
+using AutoMapper;
 using BETSoftware.Domain.Commands;
 using BETSoftware.Domain.Models;
 using BETSoftware.Domain.Models.Dtos;
@@ -38,6 +39,7 @@ namespace Api.Controllers
             if (!ModelState.IsValid) { return BadRequest(); }
 
             var login = _mapper.Map<Login>(loginDto);
+            login.Password = Cryptography.Encrypt(loginDto.Password);
             var result = await _mediator.Send(new InsertLoginCommand(login));
 
             return Ok(result);
@@ -51,6 +53,7 @@ namespace Api.Controllers
             if (!ModelState.IsValid) { return BadRequest(); }
 
             var login = _mapper.Map<Login>(loginDto);
+            login.Password = Cryptography.Encrypt(loginDto.Password);
             var result = await _mediator.Send(new GetLoginQuery(login));
 
             if (result == null) { return NotFound(); }
