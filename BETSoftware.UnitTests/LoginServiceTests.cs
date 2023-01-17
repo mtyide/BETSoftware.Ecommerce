@@ -61,8 +61,8 @@ namespace BETSoftware.UnitTests
                 Password = "password@12321",
                 Username = "mtyide"
             };
-            var product = _mapper.Map<Login>(loginDetail);
-            var response = await _loginService.Create(product);
+            var login = _mapper.Map<Login>(loginDetail);
+            var response = await _loginService.Create(login);
 
             Assert.IsNotNull(response);
             Assert.IsNotNull(response);
