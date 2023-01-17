@@ -29,6 +29,10 @@ BETSoftware.Ecommerce.Api
 BETSoftware.Ecommerce.App  
 Just make sure that both projects are launched at the same time. Use App to login or Api to test endpoints (Swagger API)  
 Run Application: Right-click Solution -> Properties -> Startup Project -> Select Multiple Startup Projects option  
+# BETSoftware.UnitTests
+The Unit Tests only serve to test BETSoftware.Domain (Services) and makes use of InMemoryDatabase (Inject) for storage  
+No need to test Handlers (CQRS) as most of the implementation lives within the repositories and services  
+To test BETSoftware.Api please refer to Swagger API/UI  
 # Requirements
 Change urls in the App's environment component (environments folder) => baseApiUrl & baseImagesUrl
 # Project Notes
