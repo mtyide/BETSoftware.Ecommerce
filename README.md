@@ -21,6 +21,11 @@ C#.NET 6.0
 BETSoftware.Data project  
 Folder: Database  
 Filename: betsoftware.bacpac  
+# Database Schema:  
+Products -> Stores products data  
+Orders -> Stores Orders data  
+Order Lines -> Stores lines created for the Order  
+Users – Store users access details  
 # Sample Login Details
 Username: mtyide  
 Password: BANDil@123456
