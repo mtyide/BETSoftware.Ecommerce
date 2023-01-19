@@ -1,5 +1,7 @@
-# BETSoftware.Ecommerce
-Light/basic eCommerce assessment for BET Software as per requirements.
+# BETSoftware.Ecommerce Assessment
+Light/basic eCommerce assessment for BET Software as per requirements.  
+Completion date: 17 January 2023  
+Steb-by-step guide (running and testing the app) -> https://drive.google.com/file/d/15iI-abpghJ1R-crdQsQ8Py_t9xTDlKa7/view?usp=share_link  
 # Swagger UI/API
 Test Api endpoints => BETSoftware.Ecommerce.Api
 # Not included
