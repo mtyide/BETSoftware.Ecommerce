@@ -44,7 +44,7 @@ To test BETSoftware.Api endpoints please refer to Swagger API/UI or Postman
 Change urls in the App's environment component (environments folder) => baseApiUrl & baseImagesUrl
 # Project Notes
 Start: 05 January 2023  
-Completion: 09 January 2023  
+Completion: 17 January 2023  
 IDE: Visual Studio 2022 (Api) & Visual Studio Code (App)  
 Database: SQL Server 2022  
 Design: MediatR (Design Pattern) & DDD (Domain Driven Design)  
