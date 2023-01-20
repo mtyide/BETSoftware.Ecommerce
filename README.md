@@ -25,9 +25,9 @@ Folder: Database
 Filename: betsoftware.bacpac  
 # Database Schema:  
 Products -> Stores products data  
-Orders -> Stores Orders data  
-Order Lines -> Stores lines created for the Order  
-Users – Store users access details  
+Orders -> Stores orders data  
+Order Lines -> Stores lines created for a particular Order  
+Users – Store user access details (Password encrypted)  
 # Sample Login Details
 Username: mtyide  
 Password: BANDil@123456
