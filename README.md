@@ -40,7 +40,7 @@ Run Application: Right-click Solution -> Properties -> Startup Project -> Select
 The Unit Tests only serve to test BETSoftware.Domain (Services) and makes use of InMemoryDatabase for storage  
 No need to test Handlers (CQRS) as most of the implementation lives within the repositories and services  
 To test BETSoftware.Api endpoints please refer to Swagger API/UI or Postman  
-# Requirements
+# Requirements (BETSoftware.App)
 Change urls in the App's environment component (environments folder) => baseApiUrl & baseImagesUrl
 # Project Notes
 Start: 05 January 2023  
