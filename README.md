@@ -27,7 +27,7 @@ Filename: betsoftware.bacpac
 Products -> Stores products data  
 Orders -> Stores orders data  
 Order Lines -> Stores lines created for a particular Order  
-Users – Store user access details (Password encrypted)  
+Users – Store user access details (Password is encrypted)  
 # Sample Login Details
 Username: mtyide  
 Password: BANDil@123456
