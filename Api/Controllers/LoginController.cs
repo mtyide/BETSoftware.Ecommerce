@@ -1,6 +1,7 @@
 ﻿using Api.Security;
 using AutoMapper;
 using BETSoftware.Domain.Commands;
+using BETSoftware.Domain.Interfaces;
 using BETSoftware.Domain.Models;
 using BETSoftware.Domain.Models.Dtos;
 using BETSoftware.Domain.Queries;

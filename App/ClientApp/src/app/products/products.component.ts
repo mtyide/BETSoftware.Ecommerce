@@ -95,7 +95,11 @@ export class ProductsComponent {
         this.pageSize = 50;
       },
       error: (response) => {
-        this.errorMessage = "An error occured: " + response.data;
+        if (response.error.status === 404) {
+          this.router.navigate(['error'])
+        } else {
+          this.errorMessage = "An error occured: " + response.message;
+        }
       }
     });
   }
@@ -138,7 +142,11 @@ export class ProductsComponent {
         this.updateOrder(order, order.id);
       },
       error: (response) => {
-        this.errorMessage = "An error has occured: " + response;
+        if (response.error.status === 404) {
+          this.router.navigate(['error'])
+        } else {
+          this.errorMessage = "An error occured: " + response.message;
+        }
       }
     });
   }

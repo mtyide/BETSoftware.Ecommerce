@@ -48,7 +48,11 @@ export class LoginComponent {
         error: (response) => {
           this.valid = false;
           this.disabled = '';
-          this.errorMessage = "An error occured: " + response.data;
+          if (response.error.status === 404) {
+            this.router.navigate(['error'])
+          } else {
+            this.errorMessage = "An error occured: " + response.message;
+          }
           document.getElementById('username')?.focus();
         }
       });
