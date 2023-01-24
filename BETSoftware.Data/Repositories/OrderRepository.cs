@@ -53,7 +53,9 @@ namespace BETSoftware.Data.Repositories
 
             entity.Active = order.Active;
             entity.CustomerId = order.CustomerId;
-            entity.Date = order.Date;
+            entity.LastModified= order.LastModified;
+            
+            if (order.Date != null) { entity.Date = order.Date; }
             if (order.Lines != null)
             {
                 var lines = new List<OrderLines>();
