@@ -9,5 +9,6 @@
         public bool? Active { get; set; }
         public decimal? TotalAmount { get; set; }
         public decimal? ShippingTax { get; set; }
+        public DateTime? LastModified { get; set; }
     }
 }

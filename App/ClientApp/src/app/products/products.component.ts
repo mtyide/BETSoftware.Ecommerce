@@ -142,6 +142,7 @@ export class ProductsComponent {
         this.updateOrder(order, order.id);
       },
       error: (response) => {
+        console.log(response);
         if (response.error.status === 404) {
           this.router.navigate(['error'])
         } else {
